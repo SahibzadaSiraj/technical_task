@@ -32,6 +32,7 @@ class MyTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(double.infinity, 64),
+        // ignore: deprecated_member_use
         primary: secondoryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       ),

@@ -1,17 +1,13 @@
 class IndividualPokeModel {
   List<Abilities>? abilities;
   int? baseExperience;
-  List<Forms>? forms;
   List<GameIndices>? gameIndices;
   int? height;
-  List<dynamic>? heldItems;
   int? id;
   bool? isDefault;
   String? locationAreaEncounters;
-  List<Moves>? moves;
   String? name;
   int? order;
-  List<dynamic>? pastTypes;
   Ability? species;
   Sprites? sprites;
   List<Stats>? stats;
@@ -21,17 +17,13 @@ class IndividualPokeModel {
   IndividualPokeModel(
       {this.abilities,
       this.baseExperience,
-      this.forms,
       this.gameIndices,
       this.height,
-      this.heldItems,
       this.id,
       this.isDefault,
       this.locationAreaEncounters,
-      this.moves,
       this.name,
       this.order,
-      this.pastTypes,
       this.species,
       this.sprites,
       this.stats,
@@ -42,105 +34,69 @@ class IndividualPokeModel {
     if (json['abilities'] != null) {
       abilities = <Abilities>[];
       json['abilities'].forEach((v) {
-        abilities!.add(Abilities.fromJson(v));
+        abilities!.add(new Abilities.fromJson(v));
       });
     }
     baseExperience = json['base_experience'];
-    if (json['forms'] != null) {
-      forms = <Forms>[];
-      json['forms'].forEach((v) {
-        forms!.add(Forms.fromJson(v));
-      });
-    }
     if (json['game_indices'] != null) {
       gameIndices = <GameIndices>[];
       json['game_indices'].forEach((v) {
-        gameIndices!.add(GameIndices.fromJson(v));
+        gameIndices!.add(new GameIndices.fromJson(v));
       });
     }
     height = json['height'];
-    if (json['held_items'] != null) {
-      heldItems = <Null>[];
-      json['held_items'].forEach((v) {
-        heldItems!.add(v);
-      });
-    }
     id = json['id'];
     isDefault = json['is_default'];
     locationAreaEncounters = json['location_area_encounters'];
-    if (json['moves'] != null) {
-      moves = <Moves>[];
-      json['moves'].forEach((v) {
-        moves!.add(v);
-      });
-    }
     name = json['name'];
     order = json['order'];
-    if (json['past_types'] != null) {
-      pastTypes = <Null>[];
-      json['past_types'].forEach((v) {
-        pastTypes!.add(v);
-      });
-    }
     species =
-        json['species'] != null ? Ability.fromJson(json['species']) : null;
+        json['species'] != null ? new Ability.fromJson(json['species']) : null;
     sprites =
-        json['sprites'] != null ? Sprites.fromJson(json['sprites']) : null;
+        json['sprites'] != null ? new Sprites.fromJson(json['sprites']) : null;
     if (json['stats'] != null) {
       stats = <Stats>[];
       json['stats'].forEach((v) {
-        stats!.add(Stats.fromJson(v));
+        stats!.add(new Stats.fromJson(v));
       });
     }
     if (json['types'] != null) {
       types = <Types>[];
       json['types'].forEach((v) {
-        types!.add(Types.fromJson(v));
+        types!.add(new Types.fromJson(v));
       });
     }
     weight = json['weight'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (abilities != null) {
-      data['abilities'] = abilities!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.abilities != null) {
+      data['abilities'] = this.abilities!.map((v) => v.toJson()).toList();
     }
-    data['base_experience'] = baseExperience;
-    if (forms != null) {
-      data['forms'] = forms!.map((v) => v.toJson()).toList();
+    data['base_experience'] = this.baseExperience;
+    if (this.gameIndices != null) {
+      data['game_indices'] = this.gameIndices!.map((v) => v.toJson()).toList();
     }
-    if (gameIndices != null) {
-      data['game_indices'] = gameIndices!.map((v) => v.toJson()).toList();
+    data['height'] = this.height;
+    data['id'] = this.id;
+    data['is_default'] = this.isDefault;
+    data['location_area_encounters'] = this.locationAreaEncounters;
+    data['name'] = this.name;
+    data['order'] = this.order;
+    if (this.species != null) {
+      data['species'] = this.species!.toJson();
     }
-    data['height'] = height;
-    if (heldItems != null) {
-      data['held_items'] = heldItems!.map((v) => v.toJson()).toList();
+    if (this.sprites != null) {
+      data['sprites'] = this.sprites!.toJson();
     }
-    data['id'] = id;
-    data['is_default'] = isDefault;
-    data['location_area_encounters'] = locationAreaEncounters;
-    if (moves != null) {
-      data['moves'] = moves!.map((v) => v.toJson()).toList();
+    if (this.stats != null) {
+      data['stats'] = this.stats!.map((v) => v.toJson()).toList();
     }
-    data['name'] = name;
-    data['order'] = order;
-    if (pastTypes != null) {
-      data['past_types'] = pastTypes!.map((v) => v.toJson()).toList();
+    if (this.types != null) {
+      data['types'] = this.types!.map((v) => v.toJson()).toList();
     }
-    if (species != null) {
-      data['species'] = species!.toJson();
-    }
-    if (sprites != null) {
-      data['sprites'] = sprites!.toJson();
-    }
-    if (stats != null) {
-      data['stats'] = stats!.map((v) => v.toJson()).toList();
-    }
-    if (types != null) {
-      data['types'] = types!.map((v) => v.toJson()).toList();
-    }
-    data['weight'] = weight;
+    data['weight'] = this.weight;
     return data;
   }
 }
@@ -154,18 +110,18 @@ class Abilities {
 
   Abilities.fromJson(Map<String, dynamic> json) {
     ability =
-        json['ability'] != null ? Ability.fromJson(json['ability']) : null;
+        json['ability'] != null ? new Ability.fromJson(json['ability']) : null;
     isHidden = json['is_hidden'];
     slot = json['slot'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (ability != null) {
-      data['ability'] = ability!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.ability != null) {
+      data['ability'] = this.ability!.toJson();
     }
-    data['is_hidden'] = isHidden;
-    data['slot'] = slot;
+    data['is_hidden'] = this.isHidden;
+    data['slot'] = this.slot;
     return data;
   }
 }
@@ -182,9 +138,9 @@ class Ability {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
-    data['url'] = url;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['url'] = this.url;
     return data;
   }
 }
@@ -198,74 +154,14 @@ class GameIndices {
   GameIndices.fromJson(Map<String, dynamic> json) {
     gameIndex = json['game_index'];
     version =
-        json['version'] != null ? Ability.fromJson(json['version']) : null;
+        json['version'] != null ? new Ability.fromJson(json['version']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['game_index'] = gameIndex;
-    if (version != null) {
-      data['version'] = version!.toJson();
-    }
-    return data;
-  }
-}
-
-class Moves {
-  Ability? move;
-  List<VersionGroupDetails>? versionGroupDetails;
-
-  Moves({this.move, this.versionGroupDetails});
-
-  Moves.fromJson(Map<String, dynamic> json) {
-    move = json['move'] != null ? Ability.fromJson(json['move']) : null;
-    if (json['version_group_details'] != null) {
-      versionGroupDetails = <VersionGroupDetails>[];
-      json['version_group_details'].forEach((v) {
-        versionGroupDetails!.add(VersionGroupDetails.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (move != null) {
-      data['move'] = move!.toJson();
-    }
-    if (versionGroupDetails != null) {
-      data['version_group_details'] =
-          versionGroupDetails!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class VersionGroupDetails {
-  int? levelLearnedAt;
-  Ability? moveLearnMethod;
-  Ability? versionGroup;
-
-  VersionGroupDetails(
-      {this.levelLearnedAt, this.moveLearnMethod, this.versionGroup});
-
-  VersionGroupDetails.fromJson(Map<String, dynamic> json) {
-    levelLearnedAt = json['level_learned_at'];
-    moveLearnMethod = json['move_learn_method'] != null
-        ? Ability.fromJson(json['move_learn_method'])
-        : null;
-    versionGroup = json['version_group'] != null
-        ? Ability.fromJson(json['version_group'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['level_learned_at'] = levelLearnedAt;
-    if (moveLearnMethod != null) {
-      data['move_learn_method'] = moveLearnMethod!.toJson();
-    }
-    if (versionGroup != null) {
-      data['version_group'] = versionGroup!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['game_index'] = this.gameIndex;
+    if (this.version != null) {
+      data['version'] = this.version!.toJson();
     }
     return data;
   }
@@ -304,26 +200,27 @@ class Sprites {
     frontFemale = json['front_female'];
     frontShiny = json['front_shiny'];
     frontShinyFemale = json['front_shiny_female'];
-    other = json['other'] != null ? Other.fromJson(json['other']) : null;
-    versions =
-        json['versions'] != null ? Versions.fromJson(json['versions']) : null;
+    other = json['other'] != null ? new Other.fromJson(json['other']) : null;
+    versions = json['versions'] != null
+        ? new Versions.fromJson(json['versions'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_female'] = backFemale;
-    data['back_shiny'] = backShiny;
-    data['back_shiny_female'] = backShinyFemale;
-    data['front_default'] = frontDefault;
-    data['front_female'] = frontFemale;
-    data['front_shiny'] = frontShiny;
-    data['front_shiny_female'] = frontShinyFemale;
-    if (other != null) {
-      data['other'] = other!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_female'] = this.backFemale;
+    data['back_shiny'] = this.backShiny;
+    data['back_shiny_female'] = this.backShinyFemale;
+    data['front_default'] = this.frontDefault;
+    data['front_female'] = this.frontFemale;
+    data['front_shiny'] = this.frontShiny;
+    data['front_shiny_female'] = this.frontShinyFemale;
+    if (this.other != null) {
+      data['other'] = this.other!.toJson();
     }
-    if (versions != null) {
-      data['versions'] = versions!.toJson();
+    if (this.versions != null) {
+      data['versions'] = this.versions!.toJson();
     }
     return data;
   }
@@ -338,24 +235,24 @@ class Other {
 
   Other.fromJson(Map<String, dynamic> json) {
     dreamWorld = json['dream_world'] != null
-        ? DreamWorld.fromJson(json['dream_world'])
+        ? new DreamWorld.fromJson(json['dream_world'])
         : null;
-    home = json['home'] != null ? Home.fromJson(json['home']) : null;
+    home = json['home'] != null ? new Home.fromJson(json['home']) : null;
     officialArtwork = json['official-artwork'] != null
-        ? OfficialArtwork.fromJson(json['official-artwork'])
+        ? new OfficialArtwork.fromJson(json['official-artwork'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (dreamWorld != null) {
-      data['dream_world'] = dreamWorld!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.dreamWorld != null) {
+      data['dream_world'] = this.dreamWorld!.toJson();
     }
-    if (home != null) {
-      data['home'] = home!.toJson();
+    if (this.home != null) {
+      data['home'] = this.home!.toJson();
     }
-    if (officialArtwork != null) {
-      data['official-artwork'] = officialArtwork!.toJson();
+    if (this.officialArtwork != null) {
+      data['official-artwork'] = this.officialArtwork!.toJson();
     }
     return data;
   }
@@ -363,7 +260,7 @@ class Other {
 
 class DreamWorld {
   String? frontDefault;
-  Null? frontFemale;
+  String? frontFemale;
 
   DreamWorld({this.frontDefault, this.frontFemale});
 
@@ -373,9 +270,9 @@ class DreamWorld {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['front_default'] = frontDefault;
-    data['front_female'] = frontFemale;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['front_default'] = this.frontDefault;
+    data['front_female'] = this.frontFemale;
     return data;
   }
 }
@@ -400,11 +297,11 @@ class Home {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['front_default'] = frontDefault;
-    data['front_female'] = frontFemale;
-    data['front_shiny'] = frontShiny;
-    data['front_shiny_female'] = frontShinyFemale;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['front_default'] = this.frontDefault;
+    data['front_female'] = this.frontFemale;
+    data['front_shiny'] = this.frontShiny;
+    data['front_shiny_female'] = this.frontShinyFemale;
     return data;
   }
 }
@@ -421,9 +318,9 @@ class OfficialArtwork {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['front_default'] = frontDefault;
-    data['front_shiny'] = frontShiny;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['front_default'] = this.frontDefault;
+    data['front_shiny'] = this.frontShiny;
     return data;
   }
 }
@@ -450,56 +347,56 @@ class Versions {
 
   Versions.fromJson(Map<String, dynamic> json) {
     generationI = json['generation-i'] != null
-        ? GenerationI.fromJson(json['generation-i'])
+        ? new GenerationI.fromJson(json['generation-i'])
         : null;
     generationIi = json['generation-ii'] != null
-        ? GenerationIi.fromJson(json['generation-ii'])
+        ? new GenerationIi.fromJson(json['generation-ii'])
         : null;
     generationIii = json['generation-iii'] != null
-        ? GenerationIii.fromJson(json['generation-iii'])
+        ? new GenerationIii.fromJson(json['generation-iii'])
         : null;
     generationIv = json['generation-iv'] != null
-        ? GenerationIv.fromJson(json['generation-iv'])
+        ? new GenerationIv.fromJson(json['generation-iv'])
         : null;
     generationV = json['generation-v'] != null
-        ? GenerationV.fromJson(json['generation-v'])
+        ? new GenerationV.fromJson(json['generation-v'])
         : null;
     generationVi = json['generation-vi'] != null
-        ? GenerationVi.fromJson(json['generation-vi'])
+        ? new GenerationVi.fromJson(json['generation-vi'])
         : null;
     generationVii = json['generation-vii'] != null
-        ? GenerationVii.fromJson(json['generation-vii'])
+        ? new GenerationVii.fromJson(json['generation-vii'])
         : null;
     generationViii = json['generation-viii'] != null
-        ? GenerationViii.fromJson(json['generation-viii'])
+        ? new GenerationViii.fromJson(json['generation-viii'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (generationI != null) {
-      data['generation-i'] = generationI!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.generationI != null) {
+      data['generation-i'] = this.generationI!.toJson();
     }
-    if (generationIi != null) {
-      data['generation-ii'] = generationIi!.toJson();
+    if (this.generationIi != null) {
+      data['generation-ii'] = this.generationIi!.toJson();
     }
-    if (generationIii != null) {
-      data['generation-iii'] = generationIii!.toJson();
+    if (this.generationIii != null) {
+      data['generation-iii'] = this.generationIii!.toJson();
     }
-    if (generationIv != null) {
-      data['generation-iv'] = generationIv!.toJson();
+    if (this.generationIv != null) {
+      data['generation-iv'] = this.generationIv!.toJson();
     }
-    if (generationV != null) {
-      data['generation-v'] = generationV!.toJson();
+    if (this.generationV != null) {
+      data['generation-v'] = this.generationV!.toJson();
     }
-    if (generationVi != null) {
-      data['generation-vi'] = generationVi!.toJson();
+    if (this.generationVi != null) {
+      data['generation-vi'] = this.generationVi!.toJson();
     }
-    if (generationVii != null) {
-      data['generation-vii'] = generationVii!.toJson();
+    if (this.generationVii != null) {
+      data['generation-vii'] = this.generationVii!.toJson();
     }
-    if (generationViii != null) {
-      data['generation-viii'] = generationViii!.toJson();
+    if (this.generationViii != null) {
+      data['generation-viii'] = this.generationViii!.toJson();
     }
     return data;
   }
@@ -512,18 +409,20 @@ class GenerationI {
   GenerationI({this.redBlue, this.yellow});
 
   GenerationI.fromJson(Map<String, dynamic> json) {
-    redBlue =
-        json['red-blue'] != null ? RedBlue.fromJson(json['red-blue']) : null;
-    yellow = json['yellow'] != null ? RedBlue.fromJson(json['yellow']) : null;
+    redBlue = json['red-blue'] != null
+        ? new RedBlue.fromJson(json['red-blue'])
+        : null;
+    yellow =
+        json['yellow'] != null ? new RedBlue.fromJson(json['yellow']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (redBlue != null) {
-      data['red-blue'] = redBlue!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.redBlue != null) {
+      data['red-blue'] = this.redBlue!.toJson();
     }
-    if (yellow != null) {
-      data['yellow'] = yellow!.toJson();
+    if (this.yellow != null) {
+      data['yellow'] = this.yellow!.toJson();
     }
     return data;
   }
@@ -555,13 +454,13 @@ class RedBlue {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_gray'] = backGray;
-    data['back_transparent'] = backTransparent;
-    data['front_default'] = frontDefault;
-    data['front_gray'] = frontGray;
-    data['front_transparent'] = frontTransparent;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_gray'] = this.backGray;
+    data['back_transparent'] = this.backTransparent;
+    data['front_default'] = this.frontDefault;
+    data['front_gray'] = this.frontGray;
+    data['front_transparent'] = this.frontTransparent;
     return data;
   }
 }
@@ -575,21 +474,21 @@ class GenerationIi {
 
   GenerationIi.fromJson(Map<String, dynamic> json) {
     crystal =
-        json['crystal'] != null ? Crystal.fromJson(json['crystal']) : null;
-    gold = json['gold'] != null ? Gold.fromJson(json['gold']) : null;
-    silver = json['silver'] != null ? Gold.fromJson(json['silver']) : null;
+        json['crystal'] != null ? new Crystal.fromJson(json['crystal']) : null;
+    gold = json['gold'] != null ? new Gold.fromJson(json['gold']) : null;
+    silver = json['silver'] != null ? new Gold.fromJson(json['silver']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (crystal != null) {
-      data['crystal'] = crystal!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.crystal != null) {
+      data['crystal'] = this.crystal!.toJson();
     }
-    if (gold != null) {
-      data['gold'] = gold!.toJson();
+    if (this.gold != null) {
+      data['gold'] = this.gold!.toJson();
     }
-    if (silver != null) {
-      data['silver'] = silver!.toJson();
+    if (this.silver != null) {
+      data['silver'] = this.silver!.toJson();
     }
     return data;
   }
@@ -627,15 +526,15 @@ class Crystal {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_shiny'] = backShiny;
-    data['back_shiny_transparent'] = backShinyTransparent;
-    data['back_transparent'] = backTransparent;
-    data['front_default'] = frontDefault;
-    data['front_shiny'] = frontShiny;
-    data['front_shiny_transparent'] = frontShinyTransparent;
-    data['front_transparent'] = frontTransparent;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_shiny'] = this.backShiny;
+    data['back_shiny_transparent'] = this.backShinyTransparent;
+    data['back_transparent'] = this.backTransparent;
+    data['front_default'] = this.frontDefault;
+    data['front_shiny'] = this.frontShiny;
+    data['front_shiny_transparent'] = this.frontShinyTransparent;
+    data['front_transparent'] = this.frontTransparent;
     return data;
   }
 }
@@ -663,12 +562,12 @@ class Gold {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_shiny'] = backShiny;
-    data['front_default'] = frontDefault;
-    data['front_shiny'] = frontShiny;
-    data['front_transparent'] = frontTransparent;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_shiny'] = this.backShiny;
+    data['front_default'] = this.frontDefault;
+    data['front_shiny'] = this.frontShiny;
+    data['front_transparent'] = this.frontTransparent;
     return data;
   }
 }
@@ -682,26 +581,26 @@ class GenerationIii {
 
   GenerationIii.fromJson(Map<String, dynamic> json) {
     emerald = json['emerald'] != null
-        ? OfficialArtwork.fromJson(json['emerald'])
+        ? new OfficialArtwork.fromJson(json['emerald'])
         : null;
     fireredLeafgreen = json['firered-leafgreen'] != null
-        ? FireredLeafgreen.fromJson(json['firered-leafgreen'])
+        ? new FireredLeafgreen.fromJson(json['firered-leafgreen'])
         : null;
     rubySapphire = json['ruby-sapphire'] != null
-        ? FireredLeafgreen.fromJson(json['ruby-sapphire'])
+        ? new FireredLeafgreen.fromJson(json['ruby-sapphire'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (emerald != null) {
-      data['emerald'] = emerald!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.emerald != null) {
+      data['emerald'] = this.emerald!.toJson();
     }
-    if (fireredLeafgreen != null) {
-      data['firered-leafgreen'] = fireredLeafgreen!.toJson();
+    if (this.fireredLeafgreen != null) {
+      data['firered-leafgreen'] = this.fireredLeafgreen!.toJson();
     }
-    if (rubySapphire != null) {
-      data['ruby-sapphire'] = rubySapphire!.toJson();
+    if (this.rubySapphire != null) {
+      data['ruby-sapphire'] = this.rubySapphire!.toJson();
     }
     return data;
   }
@@ -724,11 +623,11 @@ class FireredLeafgreen {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_shiny'] = backShiny;
-    data['front_default'] = frontDefault;
-    data['front_shiny'] = frontShiny;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_shiny'] = this.backShiny;
+    data['front_default'] = this.frontDefault;
+    data['front_shiny'] = this.frontShiny;
     return data;
   }
 }
@@ -742,26 +641,26 @@ class GenerationIv {
 
   GenerationIv.fromJson(Map<String, dynamic> json) {
     diamondPearl = json['diamond-pearl'] != null
-        ? DiamondPearl.fromJson(json['diamond-pearl'])
+        ? new DiamondPearl.fromJson(json['diamond-pearl'])
         : null;
     heartgoldSoulsilver = json['heartgold-soulsilver'] != null
-        ? DiamondPearl.fromJson(json['heartgold-soulsilver'])
+        ? new DiamondPearl.fromJson(json['heartgold-soulsilver'])
         : null;
     platinum = json['platinum'] != null
-        ? DiamondPearl.fromJson(json['platinum'])
+        ? new DiamondPearl.fromJson(json['platinum'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (diamondPearl != null) {
-      data['diamond-pearl'] = diamondPearl!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.diamondPearl != null) {
+      data['diamond-pearl'] = this.diamondPearl!.toJson();
     }
-    if (heartgoldSoulsilver != null) {
-      data['heartgold-soulsilver'] = heartgoldSoulsilver!.toJson();
+    if (this.heartgoldSoulsilver != null) {
+      data['heartgold-soulsilver'] = this.heartgoldSoulsilver!.toJson();
     }
-    if (platinum != null) {
-      data['platinum'] = platinum!.toJson();
+    if (this.platinum != null) {
+      data['platinum'] = this.platinum!.toJson();
     }
     return data;
   }
@@ -799,34 +698,15 @@ class DiamondPearl {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['back_default'] = backDefault;
-    data['back_female'] = backFemale;
-    data['back_shiny'] = backShiny;
-    data['back_shiny_female'] = backShinyFemale;
-    data['front_default'] = frontDefault;
-    data['front_female'] = frontFemale;
-    data['front_shiny'] = frontShiny;
-    data['front_shiny_female'] = frontShinyFemale;
-    return data;
-  }
-}
-
-class Forms {
-  String? name;
-  String? url;
-
-  Forms({this.name, this.url});
-
-  Forms.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    url = json['url'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
-    data['url'] = url;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['back_default'] = this.backDefault;
+    data['back_female'] = this.backFemale;
+    data['back_shiny'] = this.backShiny;
+    data['back_shiny_female'] = this.backShinyFemale;
+    data['front_default'] = this.frontDefault;
+    data['front_female'] = this.frontFemale;
+    data['front_shiny'] = this.frontShiny;
+    data['front_shiny_female'] = this.frontShinyFemale;
     return data;
   }
 }
@@ -838,14 +718,14 @@ class GenerationV {
 
   GenerationV.fromJson(Map<String, dynamic> json) {
     blackWhite = json['black-white'] != null
-        ? BlackWhite.fromJson(json['black-white'])
+        ? new BlackWhite.fromJson(json['black-white'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (blackWhite != null) {
-      data['black-white'] = blackWhite!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.blackWhite != null) {
+      data['black-white'] = this.blackWhite!.toJson();
     }
     return data;
   }
@@ -875,7 +755,7 @@ class BlackWhite {
 
   BlackWhite.fromJson(Map<String, dynamic> json) {
     animated = json['animated'] != null
-        ? DiamondPearl.fromJson(json['animated'])
+        ? new DiamondPearl.fromJson(json['animated'])
         : null;
     backDefault = json['back_default'];
     backFemale = json['back_female'];
@@ -888,18 +768,18 @@ class BlackWhite {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (animated != null) {
-      data['animated'] = animated!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.animated != null) {
+      data['animated'] = this.animated!.toJson();
     }
-    data['back_default'] = backDefault;
-    data['back_female'] = backFemale;
-    data['back_shiny'] = backShiny;
-    data['back_shiny_female'] = backShinyFemale;
-    data['front_default'] = frontDefault;
-    data['front_female'] = frontFemale;
-    data['front_shiny'] = frontShiny;
-    data['front_shiny_female'] = frontShinyFemale;
+    data['back_default'] = this.backDefault;
+    data['back_female'] = this.backFemale;
+    data['back_shiny'] = this.backShiny;
+    data['back_shiny_female'] = this.backShinyFemale;
+    data['front_default'] = this.frontDefault;
+    data['front_female'] = this.frontFemale;
+    data['front_shiny'] = this.frontShiny;
+    data['front_shiny_female'] = this.frontShinyFemale;
     return data;
   }
 }
@@ -912,18 +792,18 @@ class GenerationVi {
 
   GenerationVi.fromJson(Map<String, dynamic> json) {
     omegarubyAlphasapphire = json['omegaruby-alphasapphire'] != null
-        ? Home.fromJson(json['omegaruby-alphasapphire'])
+        ? new Home.fromJson(json['omegaruby-alphasapphire'])
         : null;
-    xY = json['x-y'] != null ? Home.fromJson(json['x-y']) : null;
+    xY = json['x-y'] != null ? new Home.fromJson(json['x-y']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (omegarubyAlphasapphire != null) {
-      data['omegaruby-alphasapphire'] = omegarubyAlphasapphire!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.omegarubyAlphasapphire != null) {
+      data['omegaruby-alphasapphire'] = this.omegarubyAlphasapphire!.toJson();
     }
-    if (xY != null) {
-      data['x-y'] = xY!.toJson();
+    if (this.xY != null) {
+      data['x-y'] = this.xY!.toJson();
     }
     return data;
   }
@@ -936,19 +816,20 @@ class GenerationVii {
   GenerationVii({this.icons, this.ultraSunUltraMoon});
 
   GenerationVii.fromJson(Map<String, dynamic> json) {
-    icons = json['icons'] != null ? DreamWorld.fromJson(json['icons']) : null;
+    icons =
+        json['icons'] != null ? new DreamWorld.fromJson(json['icons']) : null;
     ultraSunUltraMoon = json['ultra-sun-ultra-moon'] != null
-        ? Home.fromJson(json['ultra-sun-ultra-moon'])
+        ? new Home.fromJson(json['ultra-sun-ultra-moon'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (icons != null) {
-      data['icons'] = icons!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.icons != null) {
+      data['icons'] = this.icons!.toJson();
     }
-    if (ultraSunUltraMoon != null) {
-      data['ultra-sun-ultra-moon'] = ultraSunUltraMoon!.toJson();
+    if (this.ultraSunUltraMoon != null) {
+      data['ultra-sun-ultra-moon'] = this.ultraSunUltraMoon!.toJson();
     }
     return data;
   }
@@ -960,13 +841,14 @@ class GenerationViii {
   GenerationViii({this.icons});
 
   GenerationViii.fromJson(Map<String, dynamic> json) {
-    icons = json['icons'] != null ? DreamWorld.fromJson(json['icons']) : null;
+    icons =
+        json['icons'] != null ? new DreamWorld.fromJson(json['icons']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (icons != null) {
-      data['icons'] = icons!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.icons != null) {
+      data['icons'] = this.icons!.toJson();
     }
     return data;
   }
@@ -982,15 +864,15 @@ class Stats {
   Stats.fromJson(Map<String, dynamic> json) {
     baseStat = json['base_stat'];
     effort = json['effort'];
-    stat = json['stat'] != null ? Ability.fromJson(json['stat']) : null;
+    stat = json['stat'] != null ? new Ability.fromJson(json['stat']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['base_stat'] = baseStat;
-    data['effort'] = effort;
-    if (stat != null) {
-      data['stat'] = stat!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['base_stat'] = this.baseStat;
+    data['effort'] = this.effort;
+    if (this.stat != null) {
+      data['stat'] = this.stat!.toJson();
     }
     return data;
   }
@@ -1004,14 +886,14 @@ class Types {
 
   Types.fromJson(Map<String, dynamic> json) {
     slot = json['slot'];
-    type = json['type'] != null ? Ability.fromJson(json['type']) : null;
+    type = json['type'] != null ? new Ability.fromJson(json['type']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['slot'] = slot;
-    if (type != null) {
-      data['type'] = type!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['slot'] = this.slot;
+    if (this.type != null) {
+      data['type'] = this.type!.toJson();
     }
     return data;
   }

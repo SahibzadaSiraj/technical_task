@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:technical_task/data/home_page_controller.dart';
 import 'package:technical_task/models/poke_model.dart';
-import 'package:technical_task/utils/api_urls.dart';
 import 'package:technical_task/utils/app_contants.dart';
 import 'package:technical_task/utils/app_routes.dart';
 import 'package:technical_task/widgets/custom_app.dart';
@@ -18,23 +18,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getData();
-  }
-
-  List<PokeModel> pokeList = [];
-  getData() async {
-    Dio dio = Dio();
-    String url = ApiUrls.homeUrl;
-    var res = await dio.get(url);
-    res.data['results'].forEach((v) {
-      pokeList.add(PokeModel.fromJson(v));
-    });
+    final homeController =
+        Provider.of<HomePageController>(context, listen: false);
+    pokeList = homeController.pokeList;
     if (mounted) {
       setState(() {});
     }
   }
+
+  List<PokeModel> pokeList = [];
 
   @override
   Widget build(BuildContext context) {
